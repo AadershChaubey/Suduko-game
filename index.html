@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/c3b564a6f6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="buttons">
+      <button class="solve-btn btn">Solve</button>
+      <button class="clear-btn btn">Clear</button>
+      <div class="speed-container">
+        <button class="speed-btn btn">
+          <p>Instant</p>
+          <i class="fas fa-chevron-down icon"></i>
+        </button>
+        <div class="speed-list-container">
+          <ul class="speed-list">
+            <li class="list-item">Fast</li>
+            <li class="list-item">Slow</li>
+            <li class="list-item">Instant</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="suduko-container"></div>
+    <div class="buttons">
+      <button class="random-generator-btn btn">Generate</button>
+      <div class="alogrithms">
+        <button class="choose-algo btn">
+          <p>Backtracking</p>
+          <i class="fas fa-chevron-down icon"></i>
+        </button>
+        <div class="algo-container">
+          <ul class="algo-list">
+            <li class="list-item">Best First Search</li>
+            <li class="list-item">Backtracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <button class="reset-btn btn">
+        <i class="fas fa-sync-alt"></i>
+      </button> -->
+    </div>
+
+    <script src="app.js"></script>
+    <script src="buttons.js"></script>
+  </body>
+</html>
