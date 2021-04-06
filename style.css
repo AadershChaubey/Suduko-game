@@ -146,3 +146,111 @@ body {
   margin-top: 10px;
   color: rgb(87, 50, 50);
 }
+
+/* media query */
+
+@media only screen and (max-width: 950px) {
+  .suduko-container {
+    display: grid;
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  body {
+    font-size: 13px;
+  }
+  .suduko-container {
+    display: grid;
+    width: 350px;
+    height: 350px;
+  }
+
+  .btn {
+    width: 50px;
+  }
+  .algo-container,
+  .speed-list-container {
+    top: 40%;
+  }
+  .algo-list,
+  .speed-list {
+    width: 100%;
+    list-style: none;
+    padding: 10px 20px;
+    line-height: 1.5;
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  body {
+    font-size: 13px;
+  }
+  .suduko-container {
+    display: grid;
+    width: 350px;
+    height: 350px;
+  }
+
+  .btn {
+    width: 50px;
+    margin-right: 10px;
+    height: 15px;
+  }
+
+  .buttons {
+    position: absolute;
+    flex-direction: row;
+  }
+
+  .buttons-first {
+    top: 10px;
+  }
+
+  .buttons-second {
+    top: 90px;
+  }
+
+  .suduko-container {
+    margin-top: -150px;
+  }
+
+  .input-box {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  body {
+    font-size: 10px;
+  }
+  .suduko-container {
+    display: grid;
+    width: 240px;
+    height: 300px;
+  }
+
+  .btn {
+    width: 40px;
+    margin-right: 10px;
+    height: 15px;
+  }
+
+  .buttons-second {
+    top: 50px;
+  }
+
+  .suduko-container {
+    margin-top: -300px;
+  }
+
+  .input-box {
+    font-size: 20px;
+  }
+
+  .reset-btn {
+    font-size: 20px;
+  }
+}
