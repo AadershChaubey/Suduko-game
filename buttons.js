@@ -7,6 +7,7 @@ const speedButton = document.querySelector(".speed-btn");
 const speedContainer = document.querySelector(".speed-list-container");
 const speedList = speedContainer.querySelectorAll(".list-item")
 const algoList = algoOptions.querySelectorAll(".list-item");
+const undoButton = document.querySelector(".reset-btn");
 const body = document.querySelector("body");
 
 var generateButtonAllow = true;
@@ -14,26 +15,32 @@ var solveButtonAllow = true;
 
 solveButton.addEventListener("click", ()=>{
     if(solveButtonAllow){
+        displaySolving();
         solveButtonAllow = false;
         generateButtonAllow = false;
         let text = speedButton.innerText;
         let speed = 100;
         if(text == "Instant")speed = -1;
         else if(text == "Fast")speed = 0;
-        BackTracking(speed);
+        let algoText = algoButton.querySelector("p").innerText;
+        console.log(algoText);
+        if(algoText == "Backtracking")BackTracking(speed);
+        else bfs(speed);
     }
-    // bfs()
 })
 
 
 clearButton.addEventListener("click", ()=>{
+    displayNothing();
     clearAll();
     console.log(timer)
     clearInterval(timer);
+    solveButtonAllow = true;
+    generateButtonAllow = true;
 })
 
 randomGenerator.addEventListener("click", ()=>{
-    
+    displayNothing();
     if(generateButtonAllow){
         solveButtonAllow = false;
         generateButtonAllow = false;
@@ -46,13 +53,12 @@ for(let i = 0; i < 9; i++){
     for(let j = 0; j < 9; j++){
         let element = sudukoMatrix[i][j];
         element.addEventListener("keyup", (key)=>{
-            // console.log(key.keyCode, parseInt(key.KeyCode) > parseInt(96))
             const arr = [];
-            element.value = "";
-            if(key.keyCode != 8)element.value = key.keyCode - 96;
+            let value = element.value;
+            if(value.length > 1)element.value = value.slice(1);
             ResetToZero(false, arr);
             if(!check(i, j, arr))element.style.color = "red"; 
-            else element.style.color = "rgb(58, 57, 57)"
+            else element.style.color = "rgb(23 22 22)"
         })
     }
 }
@@ -64,7 +70,10 @@ algoButton.addEventListener("click", ()=>{
 
 algoList.forEach((item)=>{
     item.addEventListener("click", ()=>{
-        algoButton.querySelector("p").innerText = item.innerText;
+        let text = item.innerText;
+        if(text == "Best First Search")algoButton.querySelector("p").innerText = "BFS";
+        else algoButton.querySelector("p").innerText = text;
+
     })
 })
 
@@ -86,10 +95,23 @@ body.addEventListener("click", ()=>{
     algoOptions.style.transform = "scale3d(1, 0, 1)";
 })
 
+undoButton.addEventListener("click",()=>{
+    undo();
+    solveButtonAllow = true;
+});
+
 function clearAll(){
     sudukoMatrix.forEach((row)=>{
         row.forEach((element)=>{
             element.value = "";
+        })
+    })
+}
+
+function undo(){
+    sudukoMatrix.forEach((row)=>{
+        row.forEach((cell)=>{
+            if(cell.style.color == "rgb(121, 118, 118)")cell.value = "";
         })
     })
 }
