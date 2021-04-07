@@ -234,6 +234,14 @@ body {
   .input-box {
     font-size: 25px;
   }
+
+  .speed-list-container {
+    z-index: 100;
+  }
+
+  .reset-btn {
+    z-index: 0;
+  }
 }
 
 @media only screen and (max-width: 490px) {
