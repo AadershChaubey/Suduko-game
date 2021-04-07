@@ -203,14 +203,15 @@ body {
   }
   .suduko-container {
     display: grid;
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
   }
 
   .btn {
     width: 50px;
     margin-right: 10px;
     height: 15px;
+    z-index: 100;
   }
 
   .buttons {
@@ -235,14 +236,14 @@ body {
   }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 490px) {
   body {
     font-size: 10px;
   }
   .suduko-container {
     display: grid;
-    width: 240px;
-    height: 300px;
+    width: 330px;
+    height: 330px;
   }
 
   .btn {
@@ -255,8 +256,16 @@ body {
     top: 50px;
   }
 
+  .buttons-first {
+    top: 20px;
+  }
+
+  .buttons-second {
+    top: 100px;
+  }
+
   .suduko-container {
-    margin-top: 200px;
+    margin-top: 120px;
   }
 
   .input-box {
