@@ -15,6 +15,7 @@ var solveButtonAllow = true;
 
 solveButton.addEventListener("click", ()=>{
     if(solveButtonAllow){
+        console.log("hey");
         displaySolving();
         solveButtonAllow = false;
         generateButtonAllow = false;
@@ -90,14 +91,18 @@ speedList.forEach((item)=>{
 
 body.addEventListener("click", ()=>{
     const list =  window.event.srcElement.classList;
-    if(list.contains("btn") || list.contains("algo-p") || list.contains("icon"))return;
+    if(list.contains("btn") || list.contains("para") || list.contains("icon"))return;
     speedContainer.style.transform = "scale3d(1, 0, 1)";
     algoOptions.style.transform = "scale3d(1, 0, 1)";
+    displayNothing();
 })
 
 undoButton.addEventListener("click",()=>{
     undo();
+    clearInterval(timer);
+    displayNothing();
     solveButtonAllow = true;
+    generateButtonAllow = true;
 });
 
 function clearAll(){
@@ -111,7 +116,7 @@ function clearAll(){
 function undo(){
     sudukoMatrix.forEach((row)=>{
         row.forEach((cell)=>{
-            if(cell.style.color == "rgb(121, 118, 118)")cell.value = "";
+            if(cell.style.color == "rgb(121, 118, 118)" || cell.style.color == "rgb(200, 0, 0)")cell.value = "";
         })
     })
 }

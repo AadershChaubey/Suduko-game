@@ -114,16 +114,8 @@ function bfs(time){
     const arr = [];
     ResetToZero(false, arr);
     preBfs(matrixOfAvailableNumbers, HArray, arr);
-    // HArray.sort((a, b)=>{
-    //     let ans =  matrixOfAvailableNumbers[a[0]][a[1]].HValue - matrixOfAvailableNumbers[b[0]][b[1]].HValue;
-    //     if(ans != 0)return ans;
-    //     ans = a[0] - b[0];
-    //     if(ans != 0)return ans;
-    //     ans = a[1] - b[1];
-    //     return ans;
-    // });
+    
     const changes = [];
-    // console.log(matrixOfAvailableNumbers);
     steps[0] = parseInt(0);
     let solved = bfsSolver(matrixOfAvailableNumbers, HArray, arr, changes);
     if(!solved){
@@ -132,7 +124,6 @@ function bfs(time){
     }
     console.log("step", steps[0]);
     steps[0] = parseInt(0);
-    // console.log(changes);
     if(time == parseInt(-1))display(arr);
     else AnimateSearch(changes, time);
 }
@@ -160,7 +151,7 @@ function preBfs(matrixOfAvailableNumbers, HArray, arr){
 
 function bfsSolver(matrixOfAvailableNumbers, HArray, arr, changes){
     steps[0]++;
-    if(steps[0] >= parseInt(400000))return false;
+    if(steps[0] >= parseInt(300000))return false;
     if(HArray.length <= 0)return true;
     HArray.sort((a, b)=>{
         let ans =  matrixOfAvailableNumbers[a[0]][a[1]].HValue - matrixOfAvailableNumbers[b[0]][b[1]].HValue;
@@ -178,7 +169,7 @@ function bfsSolver(matrixOfAvailableNumbers, HArray, arr, changes){
             updateHValues(matrixOfAvailableNumbers, x, y, i, false);
             changes.push([sudukoMatrix[x][y], i, true]);
             if(bfsSolver(matrixOfAvailableNumbers, HArray, arr, changes)) return true;
-            if(steps[0] >= parseInt(500000))return false;
+            if(steps[0] >= parseInt(300000))return false;
             updateHValues(matrixOfAvailableNumbers, x, y, i, true);
         }
     }
@@ -260,6 +251,7 @@ function generateRandomMatrix(){
     let get = 3 + parseInt((Math.random()) * 5);
     sudukoMatrix[0][0].value = RandomArray[get];
     BackTracking(-1);
+    displayNothing();
 
     shuffleArray(indexes);
     let numberOfEmptySpaces = 55;
@@ -322,6 +314,7 @@ function AnimateSearch(changes, time){
 function alert(){
     bottomDisplay.innerText = "Time out, try different algorithm";
     generateButtonAllow = true;
+    solveButtonAllow = true;
 }
 
 function displaySolving(){
