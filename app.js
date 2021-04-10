@@ -165,9 +165,9 @@ function bfsSolver(matrixOfAvailableNumbers, HArray, arr, changes){
     if(matrixOfAvailableNumbers[x][y].HValue == -1)return true;
     for(let i = 1; i <= 9; i++){
         arr[x][y] = i;
+        changes.push([sudukoMatrix[x][y], i, true]);
         if(check(x, y, arr)){
             updateHValues(matrixOfAvailableNumbers, x, y, i, false);
-            changes.push([sudukoMatrix[x][y], i, true]);
             if(bfsSolver(matrixOfAvailableNumbers, HArray, arr, changes)) return true;
             if(steps[0] >= parseInt(300000))return false;
             updateHValues(matrixOfAvailableNumbers, x, y, i, true);
